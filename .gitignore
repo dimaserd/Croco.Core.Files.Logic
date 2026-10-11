@@ -1,0 +1,11 @@
+/.idea/.idea.Croco.Core.Logic.Files/.idea/indexLayout.xml
+/.idea/.idea.Croco.Core.Logic.Files/.idea/projectSettingsUpdater.xml
+/.idea/.idea.Croco.Core.Logic.Files/.idea/vcs.xml
+/.idea/.idea.Croco.Core.Logic.Files/.idea/workspace.xml
+/.idea/.gitignore
+/.idea/indexLayout.xml
+/.idea/vcs.xml
+
+/Croco.Core.Logic.Files/bin/**
+/Croco.Core.Logic.Files/obj/**
+/Croco.Core.Logic.Files.Tests/bin/**

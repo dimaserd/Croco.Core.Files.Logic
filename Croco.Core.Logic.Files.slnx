@@ -1,0 +1,4 @@
+﻿<Solution>
+  <Project Path="Croco.Core.Logic.Files.Tests\Croco.Core.Logic.Files.Tests.csproj" Type="Classic C#" />
+  <Project Path="Croco.Core.Logic.Files\Croco.Core.Logic.Files.csproj" Type="Classic C#" />
+</Solution>

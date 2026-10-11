@@ -1,0 +1,2405 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Croco.Core.Logic.Files</name>
+    </assembly>
+    <members>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.ICommonFileInfoQueryService">
+            <summary>
+            Обобщенный сервис для поиска информации о файлах.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.ICommonFileInfoQueryService.GetInfo(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Получить информацию о файле
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.ICrocoImageService">
+            <summary>
+            Сервис для работы с изображениями
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.ICrocoImageService.Resize(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Пережать изображение
+            </summary>
+            <param name="imageBytes"></param>
+            <param name="maxWidth"></param>
+            <param name="maxHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.ICrocoImageService.ConvertImageToPng(System.Byte[])">
+            <summary>
+            Конвертировать изображение в PNG.
+            </summary>
+            <param name="binaryImage"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.IFileData">
+            <summary>
+            Файловая абстракция
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Abstractions.IFileData.FileName">
+            <summary>
+            Название файла (без пути)
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Abstractions.IFileData.FileData">
+            <summary>
+            Содержимое файла в байтах
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.IFileUrlPathFormatOptionsProvider">
+            <summary>
+            Сервис для предоставления опций <see cref="T:Croco.Core.Logic.Files.Options.FileUrlPathFormatOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IFileUrlPathFormatOptionsProvider.Get(System.Threading.CancellationToken)">
+            <summary>
+            Получить опции
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IFileUrlPathFormatOptionsProvider.GetCached(System.Threading.CancellationToken)">
+            <summary>
+            Получить опции закешированно.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.IPrivateFileDataSyncService">
+            <summary>
+            Сервис для синхронизации приватных файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPrivateFileDataSyncService.GetAllFileIds(System.Threading.CancellationToken)">
+            <summary>
+            Получить идентификаторы всех приватных файлов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPrivateFileDataSyncService.CreateFiles(Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileSyncModel[],System.Threading.CancellationToken)">
+            <summary>
+            Создать файлы.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.IPrivateFileQueryService">
+            <summary>
+            Сервис для работы с приватными файлами
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPrivateFileQueryService.GetFileDataById(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Получить файл по идентификатору
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPrivateFileQueryService.GetFileDatasBySetId(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Получить файлы по идентификатору набора
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPrivateFileQueryService.GetFileNameById(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Получить файл по идентификатору
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPrivateFileQueryService.GetFileNamesByGroupId(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Получить файлы по идентификатору группы
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPrivateFileQueryService.GetFileNamesBySetId(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Получить файлы по идентификатору набора
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPrivateFileQueryService.GetFiles(Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest,System.Threading.CancellationToken)">
+            <summary>
+            Поиск приватных файлов
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.IPrivateFileUploadedHandler">
+            <summary>
+            Сервис для сохранения копий приватных файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPrivateFileUploadedHandler.HandleFile(Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileDataModel,System.Threading.CancellationToken)">
+            <summary>
+            Обработать загруженный файл.
+            </summary>
+            <param name="dbFile">Файл для обработки.</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.IPublicFileDataBucketService">
+            <summary>
+            Специальное хранилище для файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileDataBucketService.Set(System.Int32,Croco.Core.Logic.Files.Abstractions.IFileData,System.Threading.CancellationToken)">
+            <summary>
+            Записать файл
+            </summary>
+            <param name="fileId"></param>
+            <param name="fileData"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileDataBucketService.Get(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получить файл
+            </summary>
+            <param name="fileId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileDataBucketService.Remove(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Удалить файл
+            </summary>
+            <param name="fileId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.IPublicFileDataSyncService">
+            <summary>
+            Сервис для синхронизации публичных файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileDataSyncService.GetAllFileIds(System.Threading.CancellationToken)">
+            <summary>
+            Получить идентификаторы всех публичных файлов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileDataSyncService.CreateFiles(Croco.Core.Logic.Files.Models.PublicFileSyncModel[],System.Threading.CancellationToken)">
+            <summary>
+            Создать файлы.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.IPublicFileManager">
+            <summary>
+            Менеджер публичных файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileManager.UploadFilesAsync(Croco.Core.Logic.Files.Models.Requests.UploadFilesRequest,Croco.Core.Logic.Files.Options.FilesUploadOptions{Croco.Core.Logic.Files.Entities.DbFile},System.Threading.CancellationToken)">
+            <summary>
+            Загрузить файлы в приложение.
+            <para></para>
+            Издает событие <see cref="T:Croco.Core.Logic.Files.Events.PublicFilesUploadedEvent"/>
+            </summary>
+            <param name="model"></param>
+            <param name="options"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.IPublicFileQueryService">
+            <summary>
+            Сервис для поиска публичных файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileQueryService.GetFileName(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получить название файла
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileQueryService.GetFileNames(System.Int32[],System.Threading.CancellationToken)">
+            <summary>
+            Получить названия файлов
+            </summary>
+            <param name="fileIds">Идентификаторы файлов</param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileQueryService.GetFilesWithRelations(Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest,System.Threading.CancellationToken)">
+            <summary>
+            Получить файлы
+            </summary>
+            <param name="model"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileQueryService.GetFiles(Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest,System.Threading.CancellationToken)">
+            <summary>
+            Получить файлы
+            </summary>
+            <param name="model"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileQueryService.GetFileDataById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получить файл по идентификатору
+            </summary>
+            <param name="fileId"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileQueryService.CountFilesWithFileDataInDatabase(System.Threading.CancellationToken)">
+            <summary>
+            Получить кол-во файлов у которых проставлен FileData в базе данных
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Abstractions.IPublicFileUploadedHandler">
+            <summary>
+            Обработчик события загруженного файла
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Abstractions.IPublicFileUploadedHandler.HandleFile(Croco.Core.Logic.Files.Models.PublicFileDataModel,System.Threading.CancellationToken)">
+            <summary>
+            Обработать загруженный файл.
+            </summary>
+            <param name="dbFile">Файл для обработки.</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Commands.UploadSomeFilesCommand">
+            <summary>
+            Загрузить несколько файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Commands.UploadSomeFilesCommand.FilesCount">
+            <summary>
+            Кол-во файлов
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Configuration.FileEntitiesConfiguration">
+            <summary>
+            Конфигурация для сущностей
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Configuration.FileEntitiesConfiguration.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Метод конфигурации сущностей
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Constants.CommonFileCopyConstants">
+            <summary>
+            Константы для работы с копиями файлов
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.CommonFileCopyConstants.FileIdAndNameUrlPathFormat">
+            <summary>
+            Формат пути к оригиналу файлу на диске по идентификатору и имени.
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.CommonFileCopyConstants.DefaultFileIdAndNameWebUrlFormat">
+            <summary>
+            Формат пути к оригиналу файлу на диске по идентификатору и имени для веб-приложения.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Constants.CommonFileCopyConstants.GetDefaultFileIdAndNameWebUrlFormat(System.String)">
+            <summary>
+            Получить формат пути к файлу относительно домена.
+            </summary>
+            <param name="applicationUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Constants.ConfigurationConsts">
+            <summary>
+            Константы конфигурации.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Constants.FileExtensions">
+            <summary>
+            Расширения файлов
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FileExtensions.Image">
+            <summary>
+            Изображения
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FileExtensions.Document">
+            <summary>
+            Документы
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FileExtensions.Video">
+            <summary>
+            Видео
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FileExtensions.Audio">
+            <summary>
+            Аудио
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FileExtensions.Archive">
+            <summary>
+            Архивы
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FileExtensions.HtmlFiles">
+            <summary>
+            Расширения связанные с Html документами
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FileExtensions.All">
+            <summary>
+            Все поддерживаемые расширения
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Constants.FileExtensions.GetExtensions">
+            <summary>
+            Получить список расширений
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Constants.FilePathVariables">
+            <summary>
+            Переменные для формирования пути к пережатой копии изображению
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FilePathVariables.DomainUrl">
+            <summary>
+            Домен приложения
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FilePathVariables.SizeType">
+            <summary>
+            Тип размера пережатой копии изображения
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FilePathVariables.FileId">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FilePathVariables.FileName">
+            <summary>
+            Название файла.
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.FilePathVariables.Extension">
+            <summary>
+            Разрешение файла
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Constants.LocalFileCopyConstants">
+            <summary>
+            Константы для работы с локальными копиями файлов
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.LocalFileCopyConstants.FilesCopiesDirectoryName">
+            <summary>
+            Название директории, где хранятся копии файлов
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.LocalFileCopyConstants.OriginalDirectoryName">
+            <summary>
+            Название папки, где хранятся оригиналы файлов
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.LocalFileCopyConstants.ImagesDirectoryName">
+            <summary>
+            Название папки где хранятся пережатые копии изображений
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.LocalFileCopyConstants.FileCopyInfosDirectoryName">
+            <summary>
+            Название директории для информации о файле
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.LocalFileCopyConstants.DefaultImgExtension">
+            <summary>
+            Расширение изображения по умолчанию для пережатых копий
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.LocalFileCopyConstants.FileInfoExtension">
+            <summary>
+            Расширение файла информации об изображении
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Constants.PublicFileCopyConstants">
+            <summary>
+            Константы для работы с копиями публичных файлов
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.PublicFileCopyConstants.DefaultImageCopyServerPathFormat">
+            <summary>
+            Формат локального пути к пережатой копии изображения на сервере
+            </summary>
+        </member>
+        <member name="F:Croco.Core.Logic.Files.Constants.PublicFileCopyConstants.DefaultImageCopyWebUrlFormat">
+            <summary>
+            Формат веб пути к пережатой копии изображения для приложения
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Constants.PublicFileCopyConstants.GetVirtualResizedImageLocalPath(System.Int32,System.String)">
+            <summary>
+            Возвращает виртуальный путь к расположению изображения из базы данных по идентификатору и типу размера изображения.
+            (Использовать только при полной уверенности, что данный файл является изображением)
+            </summary>
+            <param name="fileId">Идентификатор изображения</param>
+            <param name="sizeName">Тип размера изображения</param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Constants.PublicFileCopyConstants.GetVirtualResizedImageLocalPath(System.String,System.String)">
+            <summary>
+            Возвращает виртуальный путь к расположению изображения из базы данных по идентификатору и типу размера изображения.
+            (Использовать только при полной уверенности, что данный файл является изображением)
+            </summary>
+            <param name="fileId">Идентификатор изображения</param>
+            <param name="sizeName">Тип размера изображения</param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Constants.PublicFileCopyConstants.GetDefaultImageCopyWebUrlFormat(System.String)">
+            <summary>
+            Получить адрес изображения
+            </summary>
+            <param name="applicationUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext">
+            <summary>
+            Контекст для файлов в базе данных
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext})">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext.DbFiles">
+            <summary>
+            Файлы
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext.DbFileRelations">
+            <summary>
+            Отношения между файлами и сущностями
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext.DbFileModifiers">
+            <summary>
+            Модификаторы файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext.ResizedImageFileDownloadLinks">
+            <summary>
+            Внешние ссылки для пережатых изображений публичных файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext.ResizedImagePrivateFileDownloadLinks">
+            <summary>
+            Внешние ссылки для пережатых изображений приватных файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext.PrivateDbFiles">
+            <summary>
+            Приватные файлы
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext.PrivateDbFileWithGroupRelations">
+            <summary>
+            Привязки файлов к группе.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Croco.Core.Logic.Files.DbFileManagerServiceCollectionExtensions">
+            <summary>
+            Методы расширения для регистрации файлового менеджера
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.DbFileManagerServiceCollectionExtensions.RegisterFileStorageLogic(Croco.Core.Application.CrocoApplicationBuilder,Croco.Core.Logic.Files.Options.CrocoFileOptions,Croco.Core.Logic.Files.Options.LocalFileCopySaverOptions)">
+            <summary>
+            Зарегистрировать логику для файлового хранилища
+            </summary>
+            <param name="appBuilder"></param>
+            <param name="fileOptions"></param>
+            <param name="copyServiceOptions"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.DbFileManagerServiceCollectionExtensions.RegisterPublicFileHandler``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Зарегистрировать обработчика загрузки публичного файла.
+            </summary>
+            <param name="services"></param>
+            <typeparam name="THandler"></typeparam>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.DbFileManagerServiceCollectionExtensions.RegisterPrivateFileHandler``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Зарегистрировать обработчика загрузки приватного файла.
+            </summary>
+            <param name="services"></param>
+            <typeparam name="THandler"></typeparam>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.DbFileManagerServiceCollectionExtensions.CheckForDbFileManager(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Проверить зарегистрирован ли <see cref="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileManager"/>
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Entities.DbFile">
+            <summary>
+            Класс описывающий файл который находится в базе данных
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFile.Id">
+            <summary>
+            Идентификатор записи
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFile.IdAsString">
+            <summary>
+            Идентификатор файла как строка
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFile.Relations">
+            <summary>
+            Отношения к другим сущностям
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFile.Modifiers">
+            <summary>
+            Модификаторы
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFile.ResizedImageFileDownloadLinks">
+            <summary>
+            Ссылки для скачивания для пережатых изображений
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Entities.DbFileBaseEntity">
+            <summary>
+            Базовая сущность описывающая файл вне зависимости от идентификатора
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileBaseEntity.Type">
+            <summary>
+            Тип файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileBaseEntity.DownloadUrl">
+            <summary>
+            Внешняя ссылка для скачивания файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileBaseEntity.SourceType">
+            <summary>
+            Тип источника данных
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileBaseEntity.FileName">
+            <summary>
+            Имя файла. Используется для возвращения файла с нужным расширением из массива байтов.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileBaseEntity.FileNameUpperCase">
+            <summary>
+            Название файла в верхнем регистре, используется для поиска
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileBaseEntity.FileData">
+            <summary>
+            Содержимое файла в байтах.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileBaseEntity.IsFileDataExported">
+            <summary>
+            Экспортированы ли данные о файле в другое хранилище
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileBaseEntity.DataExporterProviderId">
+            <summary>
+            Провайдер данных для экспорта
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileBaseEntity.ApplicationId">
+            <summary>
+            Идентификатор приложения. По этому идентификатору происходит разграничение данных
+            между разными пользователями системы.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileBaseEntity.VisibleToEveryAppId">
+            <summary>
+            Сущность доступна для пользователя любого приложения внутри мультитенантной системы.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Entities.DbFileModifier">
+            <summary>
+            Сущность описывающая строковый модификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileModifier.FileId">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileModifier.File">
+            <summary>
+            Файл
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileModifier.ModiferName">
+            <summary>
+            Название модификатора
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileModifier.Value">
+            <summary>
+            Значение модификатора
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Entities.DbFileRelation">
+            <summary>
+            Сущность описыващая перевязку с файлом лежащим в базе данных и внешней сущностью
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileRelation.Id">
+            <summary>
+            Идентификатор записи
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileRelation.FileId">
+            <summary>
+            Идентификтор файла, к которому принадлежит данная история
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileRelation.File">
+            <summary>
+            Ссылка на файл, к которому принадлежит данная история
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileRelation.RelationName">
+            <summary>
+            Название отношения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileRelation.RelationValue">
+            <summary>
+            Значение отношения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileRelation.EntityTypeFullName">
+            <summary>
+            Полное название типа сущности, с которой происходит перевязка
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileRelation.EntityKey">
+            <summary>
+            Уникальный ключ сущности с которой происходит перевязка
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.DbFileRelation.RelationCustomData">
+            <summary>
+            Данные описывающие отношения
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Entities.PrivateDbFile">
+            <summary>
+            Класс описывающий приватный файл, который находится в базе данных
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.PrivateDbFile.Id">
+            <summary>
+            Идентификатор записи
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.PrivateDbFile.SetId">
+            <summary>
+            Идентификатор набора файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.PrivateDbFile.ResizedImageFileDownloadLinks">
+            <summary>
+            Ссылки для скачивания для пережатых изображений
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Entities.PrivateDbFileWithGroupRelation">
+            <summary>
+            Сущность описывающая привязку файла к группе.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.PrivateDbFileWithGroupRelation.FileId">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.PrivateDbFileWithGroupRelation.File">
+            <summary>
+            Файл.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.PrivateDbFileWithGroupRelation.GroupId">
+            <summary>
+            Идентификатор группы файлов
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Entities.ResizedImageFileDownloadLink">
+            <summary>
+            Внешняя ссылка для скачивания пережатого изображения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.ResizedImageFileDownloadLink.FileId">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.ResizedImageFileDownloadLink.File">
+            <summary>
+            Файл
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Entities.ResizedImageFileDownloadLinkBase">
+            <summary>
+            Базовый класс для описания ссылки на пережатое изображение
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.ResizedImageFileDownloadLinkBase.Id">
+            <summary>
+            Идентификатор записи
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.ResizedImageFileDownloadLinkBase.ProviderId">
+            <summary>
+            Идентификатор провайдера.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.ResizedImageFileDownloadLinkBase.DownloadUrl">
+            <summary>
+            Ссылка для скачивания
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.ResizedImageFileDownloadLinkBase.SizeName">
+            <summary>
+            Название размера изображения
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Entities.ResizedImagePrivateFileDownloadLink">
+            <summary>
+            Внешняя ссылка для скачивания пережатого изображения приватного файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.ResizedImagePrivateFileDownloadLink.FileId">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Entities.ResizedImagePrivateFileDownloadLink.File">
+            <summary>
+            Файл
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.EventHandlers.PrivateFilesUploadedEventHandler">
+            <summary>
+            Обработчик события загрузки приватного файла.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.EventHandlers.PrivateFilesUploadedEventHandler.#ctor(Croco.Core.Contract.Application.ICrocoApplication,Microsoft.Extensions.Logging.ILogger{Croco.Core.Logic.Files.EventHandlers.PrivateFilesUploadedEventHandler},Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService,Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileUploadedAggregatedHandler)">
+            <summary>
+            Конструктор.
+            </summary>
+            <param name="application"></param>
+            <param name="logger"></param>
+            <param name="queryService"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Events.PrivateFilesUploadedEvent">
+            <summary>
+            Событие о том, что приватные файлы загружены
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Events.PrivateFilesUploadedEvent.FileIds">
+            <summary>
+            Идентификаторы файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Events.PrivateFilesUploadedEvent.SetId">
+            <summary>
+            Идентификатор набора файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Events.PrivateFilesUploadedEvent.HandlersExecuted">
+            <summary>
+            Были ли вызваны обработчики для создания копий
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Events.PublicFilesUploadedEvent">
+            <summary>
+            Событие о том что файлы загружены
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Events.PublicFilesUploadedEvent.FileIds">
+            <summary>
+            Идентификаторы файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Events.PublicFilesUploadedEvent.HandlersExecuted">
+            <summary>
+            Выполнена ли логика обработчиков.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Extensions.LocalFileCopyServiceExtensions">
+            <summary>
+            Расширения для сервиса занимающегося локальными копиями файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Extensions.LocalFileCopyServiceExtensions.GetResizedImageLocalPath(Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService,System.Int32,Croco.Core.Contract.Enumerations.ImageSizeType)">
+            <summary>
+            Возвращает путь к локальному расположению изображения из базы данных по идентификатору и типу размера изображения.
+            (Использовать только при полной уверенности, что данный файл является изображением)
+            </summary>
+            <param name="service"></param>
+            <param name="fileId">Идентификатор изображения</param>
+            <param name="type">Тип размера изображения</param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Extensions.StreamExtensions">
+            <summary>
+            Расширения для класса <see cref="T:System.IO.Stream"/>.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Extensions.StreamExtensions.ReadStreamAsBytes(System.IO.Stream)">
+            <summary>
+            Привести поток к массиву байтов
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.AddOrUpdateFileRelation`1">
+            <summary>
+            Добавить или обновить файловую перевязку
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.AddOrUpdateFileRelation`1.FileId">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.AddOrUpdateFileRelation`1.RelationName">
+            <summary>
+            Название отношения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.AddOrUpdateFileRelation`1.RelationValue">
+            <summary>
+            Значение отношения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.AddOrUpdateFileRelation`1.RelationCustomData">
+            <summary>
+            Данные описывающие отношения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.AddOrUpdateFileRelation`1.EntityKey">
+            <summary>
+            Уникальный ключ сущности с которой происходит перевязка
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.CommonFileInfoResultModel">
+            <summary>
+            Результат поиска информации о файле.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.CommonFileInfoResultModel.Id">
+            <summary>
+            Идентификатор.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.CommonFileInfoResultModel.IsPrivateId">
+            <summary>
+            Является ли идентификатор файла приватным.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.CommonFileInfoResultModel.FileInfo">
+            <summary>
+            Информация о файле.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.CrocoFileData">
+            <summary>
+            Файл с данными
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.CrocoFileData.FileName">
+            <summary>
+            Название файла (без пути)
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.CrocoFileData.FileData">
+            <summary>
+            Содержимое файла в байтах
+            </summary>>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Models.CrocoFileData.FromFilePath(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Создать файл из пути к файлу
+            </summary>
+            <param name="filePath">Путь к файлу</param>
+            <param name="cancellationToken">Токен отмены</param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.DbFileIntIdModelNoData">
+            <summary>
+            Модель описывающая состояние файла в системе без его содержимого в виде массива байтов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.DbFileIntIdModelNoData.Id">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.DbFileIntIdModelNoData.FileName">
+            <summary>
+            Имя файла. Используется для возвращения файла с нужным расширением из массива байтов.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.DbFileNoDataWithRelations">
+            <summary>
+            Файл с отношениями
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.DbFileNoDataWithRelations.Id">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.DbFileNoDataWithRelations.FileName">
+            <summary>
+            Название файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.DbFileNoDataWithRelations.Relations">
+            <summary>
+            Отношения между файлами и сторонними сущностями
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.DeleteFileRelation`1">
+            <summary>
+            Удалить файловую перевязку
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.DeleteFileRelation`1.FileId">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.DeleteFileRelation`1.RelationName">
+            <summary>
+            Название отношения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.DeleteFileRelation`1.EntityKey">
+            <summary>
+            Уникальный ключ сущности с которой происходит перевязка
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.FileDataModel">
+            <summary>
+            Модель с данными о файле
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileDataModel.Id">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileDataModel.Data">
+            <summary>
+            Данные в виде байтовой строки
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileDataModel.FileName">
+            <summary>
+            Имя файла
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.FileExportResult">
+            <summary>
+            Модель описывающая результат экспорта файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileExportResult.FileIdFrom">
+            <summary>
+            С какого идентификатора 
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileExportResult.FileIdTo">
+            <summary>
+            До какого идентификаторы
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileExportResult.Files">
+            <summary>
+            Экспортированные файлы
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.FileInfoModel">
+            <summary>
+            Информация о файле.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileInfoModel.Type">
+            <summary>
+            Тип
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileInfoModel.Name">
+            <summary>
+            Название файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileInfoModel.DownloadUrl">
+            <summary>
+            Ссылка для скачивания оригинала файла.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.FileLocalCopyInfo">
+            <summary>
+            Информация о сохраненном файле 
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileLocalCopyInfo.FileName">
+            <summary>
+            Имя файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileLocalCopyInfo.Extension">
+            <summary>
+            Расширение файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileLocalCopyInfo.OriginalFilePath">
+            <summary>
+            Путь к оригинальному файлу
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileLocalCopyInfoInner.FileName">
+            <summary>
+            Имя файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileLocalCopyInfoInner.Extension">
+            <summary>
+            Расширение файла
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.FileNameAndDataModel">
+            <summary>
+            Модель названия файла и данных.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileNameAndDataModel.Data">
+            <summary>
+            Данные в виде байтовой строки
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileNameAndDataModel.FileName">
+            <summary>
+            Имя файла
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.FileRelationModel">
+            <summary>
+            Отношение между файлом
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileRelationModel.EntityTypeFullName">
+            <summary>
+            Полное название типа сущности, с которой происходит перевязка
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileRelationModel.EntityKey">
+            <summary>
+            Ключ к сущности, с которой происходит перевязка
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileRelationModel.RelationName">
+            <summary>
+            Название отношения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileRelationModel.RelationValue">
+            <summary>
+            Значение отношения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileRelationModel.RelationCustomData">
+            <summary>
+            Данные описывающие отношения
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.FileSimpleModel">
+            <summary>
+            Модель с идентификатором файла и названием и ссылкой для скачивания
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileSimpleModel.FileId">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileSimpleModel.FileName">
+            <summary>
+            Название файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileSimpleModel.Type">
+            <summary>
+            Тип файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileSimpleModel.DownloadUrl">
+            <summary>
+            Внешняя ссылка для скачивания файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.FileSimpleModel.ApplicationId">
+            <summary>
+            Идентификатор приложения. По этому идентификатору происходит разграничение данных
+            между разными пользователями системы.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.ImgFileResizeSetting">
+            <summary>
+            Настройка для пережатия изображений
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.ImgFileResizeSetting.MaxWidth">
+            <summary>
+            Максимальная ширина
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.ImgFileResizeSetting.MaxHeight">
+            <summary>
+            Максимальная высота
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileDataModel">
+            <summary>
+            Модель описывающая приватный файл с данными
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileDataModel.Id">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileDataModel.FileName">
+            <summary>
+            Название файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileDataModel.SetId">
+            <summary>
+            Идентификатор набора файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileDataModel.CreatedOn">
+            <summary>
+            Дата создания файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileDataModel.FileData">
+            <summary>
+            Содержимое файла
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileNameModel">
+            <summary>
+            Модель описывающая приватный файл
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileNameModel.Id">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileNameModel.SetId">
+            <summary>
+            Идентификатор набора файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileNameModel.FileName">
+            <summary>
+            Название файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileNameModel.Type">
+            <summary>
+            Тип файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileNameModel.DownloadUrl">
+            <summary>
+            Ссылка для загрузки файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileNameModel.CreatedOn">
+            <summary>
+            Дата создания файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileNameModel.ApplicationId">
+            <summary>
+            Идентификатор приложения. По этому идентификатору происходит разграничение данных
+            между разными пользователями системы.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFilesCreatedResult">
+            <summary>
+            Результат загрузки файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFilesCreatedResult.Error(System.String)">
+            <summary>
+            Результат с ошибкой
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFilesCreatedResult.Success(System.String,System.String[])">
+            <summary>
+            Успешный результат
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFilesCreatedResult.Succeeded">
+            <summary>
+            Результат успешности операции
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFilesCreatedResult.ErrorMessage">
+            <summary>
+            Текст ошибки
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFilesCreatedResult.SetId">
+            <summary>
+            Идентификатор набора файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFilesCreatedResult.FileIds">
+            <summary>
+            Идентификаторы файлов
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileSyncModel">
+            <summary>
+            Модель приватного файла для синхронизации.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileSyncModel.Id">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileSyncModel.FileName">
+            <summary>
+            Название файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileSyncModel.SetId">
+            <summary>
+            Идентификатор наборы файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileSyncModel.CreatedOn">
+            <summary>
+            Дата создания файла
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.PrivateFiles.SetGroupIdForPrivateFilesRequest">
+            <summary>
+            Запрос для установки идентификатора группы для приватных файлов.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.SetGroupIdForPrivateFilesRequest.GroupId">
+            <summary>
+            Идентификатор группы файлов.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.SetGroupIdForPrivateFilesRequest.FileIds">
+            <summary>
+            Идентификатор набора файлов.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.PrivateFiles.UploadPrivateFilesRequest">
+            <summary>
+            Запрос для загрузки файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.UploadPrivateFilesRequest.Files">
+            <summary>
+            Файлы
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.UploadPrivateFilesRequest.ApplicationId">
+            <summary>
+            Идентификатор приложения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PrivateFiles.UploadPrivateFilesRequest.ExecuteHandlersNow">
+            <summary>
+            Запустить обработчиков сразу.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.PublicFileDataModel">
+            <summary>
+            Модель описывающая состояние файла в системе с содержимым в виде массива байтов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PublicFileDataModel.Id">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PublicFileDataModel.FileName">
+            <summary>
+            Имя файла. Используется для возвращения файла с нужным расширением из массива байтов.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PublicFileDataModel.FileData">
+            <summary>
+            Содержимое файла в байтах
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.PublicFileSyncModel">
+            <summary>
+            Модель публичного файла для синхронизации.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PublicFileSyncModel.Id">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.PublicFileSyncModel.FileName">
+            <summary>
+            Название файла
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.Requests.DeleteFileDataRequest">
+            <summary>
+            Запрос на удаление данных о содержимом файлов из бд
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Requests.DeleteFileDataRequest.Count">
+            <summary>
+            Количество файлов для удаления данных
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Requests.DeleteFileDataRequest.MaxFileId">
+            <summary>
+            Максимальный идентификатор файла, до которого можно спокойно удалять
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest">
+            <summary>
+            Модель для поиска файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest.Q">
+            <summary>
+            Поисковая строка
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest.FileName">
+            <summary>
+            Название файла
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest.ApplicationId">
+            <summary>
+            Идентификатор приложения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest.FileTypes">
+            <summary>
+            Типы файлов
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.Requests.UploadFilesRequest">
+            <summary>
+            Модель для загрузки файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Requests.UploadFilesRequest.Files">
+            <summary>
+            Файлы
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Requests.UploadFilesRequest.ExecuteHandlersNow">
+            <summary>
+            Вызвать обработчиков события
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Requests.UploadFilesRequest.ApplicationId">
+            <summary>
+            Идентификатор приложения
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.ResizedImageData">
+            <summary>
+            Данные пережатого файла.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.ResizedImageData.Data">
+            <summary>
+            Данные пережатого изображения файла.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.ResizedImageData.SizeName">
+            <summary>
+            Название размера изображения.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.Responses.DeleteFileDataResponse">
+            <summary>
+            Моджель описывающая результат удаления файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Responses.DeleteFileDataResponse.Succeeded">
+            <summary>
+            Флаг успешности
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Responses.DeleteFileDataResponse.ErrorMessage">
+            <summary>
+            Текст ошибки
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Responses.DeleteFileDataResponse.FilesLeftCount">
+            <summary>
+            Сколько еще осталось удалить файлов с учетом ограничения по максимальному
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Responses.DeleteFileDataResponse.MaxFileId">
+            <summary>
+            Ограничение по максимальному идентификатору файла
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Models.Responses.DeleteFileDataResponse.Success(System.Int32,System.Int32)">
+            <summary>
+            Инициализирует успешный результат
+            </summary>
+            <param name="filesLeft"></param>
+            <param name="maxFileId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Models.Responses.DeleteFileDataResponse.Error(System.String)">
+            <summary>
+            Инициализирует результат с ошибкой
+            </summary>
+            <param name="errorMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Models.Responses.PublicFilesUploadResponse">
+            <summary>
+            Модель описывающая ответ от метода загрузки файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Models.Responses.PublicFilesUploadResponse.Error(System.String)">
+            <summary>
+            Результат с ошибкой
+            </summary>
+            <param name="errorMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Models.Responses.PublicFilesUploadResponse.Success(System.Int32[],System.String)">
+            <summary>
+            Успешный результат
+            </summary>
+            <param name="fileIds"></param>
+            <param name="filesUploadedEventId"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Responses.PublicFilesUploadResponse.Succeeded">
+            <summary>
+            Результат успешности операции
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Responses.PublicFilesUploadResponse.ErrorMessage">
+            <summary>
+            Текст ошибки
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Responses.PublicFilesUploadResponse.FileIds">
+            <summary>
+            Идентификаторы файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Models.Responses.PublicFilesUploadResponse.FilesUploadedEventId">
+            <summary>
+            Идентификатор события <see cref="T:Croco.Core.Logic.Files.Events.PublicFilesUploadedEvent"/> выпущенного в шину сообщений
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Options.CrocoFileOptions">
+            <summary>
+            Опции для настройки локального файлового хранилища
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Options.CrocoFileOptions.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Options.CrocoFileOptions.SourceDirectory">
+            <summary>
+            Исходная директория
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Options.CrocoFileOptions.ImgFileResizeSettings">
+            <summary>
+            Настройки для пережатия изображений
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Options.FilesUploadOptions`1">
+            <summary>
+            Опции для загрузки файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Options.FilesUploadOptions`1.CustomFileAction">
+            <summary>
+            Действие 
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Options.FileUrlPathFormatOptions">
+            <summary>
+            Опции урлов для получения файлов
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Options.FileUrlPathFormatOptions.SizeTypeAndFileIdImageUrlFormat">
+            <summary>
+            Формат адреса для пережатых изображений.
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Options.FileUrlPathFormatOptions.FileIdAndNamePathUrlFormat">
+            <summary>
+            Формат адреса до оригиналов файлов по идентификатору и названию.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Options.FileUrlPathFormatOptions.GetUrlForImageByFileIdAndSizeType(System.Int32,System.String)">
+            <summary>
+            Получить путь к файлу изображения по идентификатору файла и размеру.
+            </summary>
+            <param name="fileId">Идентификатор файла.</param>
+            <param name="sizeType">Тип размера изображения.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Options.FileUrlPathFormatOptions.GetUrlForImageByFileIdAndSizeType(System.String,System.String)">
+            <summary>
+            Получить путь к файлу изображения по идентификатору файла и размеру.
+            </summary>
+            <param name="fileId">Идентификатор файла.</param>
+            <param name="sizeType">Тип размера изображения.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Options.FileUrlPathFormatOptions.GetUrlForFileIdAndFileName(System.String,System.String)">
+            <summary>
+            Получить путь к файлу по идентификатору файла и имени.
+            </summary>
+            <param name="fileId">Идентификатор файла.</param>
+            <param name="fileName">Название файла.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Options.LocalFileCopySaverOptions">
+            <summary>
+            Опции для настройки сохранения локальных файлов.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Options.LocalFileCopySaverOptions.AllDisabled">
+            <summary>
+            Все выключено
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Options.LocalFileCopySaverOptions.AllEnabled">
+            <summary>
+            Все включено
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Options.LocalFileCopySaverOptions.SaveResizedImageCopies">
+            <summary>
+            Нужно ли делать локально пережатые копии изображений на сервере
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Options.LocalFileCopySaverOptions.SaveOriginalImageCopy">
+            <summary>
+            Сохранять оригинальную копию изображения
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Options.LocalFileCopySaverOptions.SaveOriginalFile">
+            <summary>
+            Сохранять оригинальный файл
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.BaseDbFileQueryService">
+            <summary>
+            Базовый сервис для написания запросов к файлам
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.BaseDbFileQueryService.#ctor(Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="dataConnection"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.BaseDbFileQueryService.GetById``1(System.Int32,System.Linq.Expressions.Expression{System.Func{Croco.Core.Logic.Files.Entities.DbFile,``0}},System.Threading.CancellationToken)">
+            <summary>
+            Получить файл по идентификатору.
+            </summary>
+            <param name="fileId"></param>
+            <param name="mapper"></param>
+            <param name="token"></param>
+            <typeparam name="TFileResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.BaseDbFileQueryService.GetByIds``1(System.Int32[],System.Linq.Expressions.Expression{System.Func{Croco.Core.Logic.Files.Entities.DbFile,``0}},System.Threading.CancellationToken)">
+            <summary>
+            Получить файлы по идентификаторам.
+            </summary>
+            <param name="fileIds"></param>
+            <param name="mapper"></param>
+            <param name="token"></param>
+            <typeparam name="TFileResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.BaseDbFileQueryService.Search``1(Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest,System.Linq.Expressions.Expression{System.Func{Croco.Core.Logic.Files.Entities.DbFile,``0}},System.Threading.CancellationToken)">
+            <summary>
+            Поиск файлов по фильтру.
+            </summary>
+            <param name="model"></param>
+            <param name="mapper"></param>
+            <param name="token"></param>
+            <typeparam name="TFileResult"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.CommonFileInfoQueryService">
+            <summary>
+            Обобщенный сервис для поиска информации о файлах.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.CommonFileInfoQueryService.#ctor(Croco.Core.Logic.Files.Abstractions.IFileUrlPathFormatOptionsProvider,Croco.Core.Contract.Application.ICrocoApplication)">
+            <summary>
+            Конструктор.
+            </summary>
+            <param name="urlPathFormatOptionsProvider"></param>
+            <param name="application"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.CommonFileInfoQueryService.GetInfo(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Получить информацию
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.DefaultFileUrlPathFormatOptionsProvider">
+            <summary>
+            Провайдер для предоставления опций <see cref="T:Croco.Core.Logic.Files.Options.FileUrlPathFormatOptions"/> по-умолчанию.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.DefaultFileUrlPathFormatOptionsProvider.#ctor(Croco.Core.Options.AppOptions)">
+            <summary>
+            Конструктор.
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.DefaultFileUrlPathFormatOptionsProvider.Get(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.DefaultFileUrlPathFormatOptionsProvider.GetCached(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.FileChecker">
+            <summary>
+            Класс для проверки файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FileChecker.GetFileType(System.String)">
+            <summary>
+            Получить тип файла
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FileChecker.IsImage(System.String)">
+            <summary>
+            Является ли файл изображением
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FileChecker.IsImage(Croco.Core.Logic.Files.Abstractions.IFileData)">
+            <summary>
+            Является ли файл изображением
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FileChecker.IsGoodFile(Croco.Core.Logic.Files.Abstractions.IFileData)">
+            <summary>
+            Является ли файл хорошим
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FileChecker.IsGoodFile(System.String)">
+            <summary>
+            Является ли файл хорошим
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FileChecker.GetExtension(System.String)">
+            <summary>
+            Получить расширение
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.FilesStateComputingService">
+            <summary>
+            Сервис рассчитывает состояние файлов в бд,
+            если оно не удовлетворительно тогда запускает логику для исправления этой ситуации.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FilesStateComputingService.#ctor(Croco.Core.Contract.Application.ICrocoApplication)">
+            <summary>
+            Конструктор.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FilesStateComputingService.ComputeData(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.FilesStateControlService">
+            <summary>
+            Сервис для отслеживания состояния файлов в системе.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FilesStateControlService.#ctor(Croco.Core.Contract.Data.ICrocoDataConnection{Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext},Croco.Core.Contract.EventSourcing.Abstractions.IEventSourcer)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="dbConnection"></param>
+            <param name="eventSourcer"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FilesStateControlService.CheckPublicFiles(System.Threading.CancellationToken)">
+            <summary>
+            Проверить публичные файлы.
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FilesStateControlService.CheckPrivateFiles(System.Threading.CancellationToken)">
+            <summary>
+            Проверить приватные файлы
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.FileTypeComputingService">
+            <summary>
+            Сервис для расчёта типа файла
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FileTypeComputingService.#ctor(Croco.Core.Contract.Data.ICrocoDataConnection{Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext},Croco.Core.Logic.Files.Services.FileChecker)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="dataConnection"></param>
+            <param name="fileChecker"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.FileTypeComputingService.SetTypeForFiles(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Проставить тип файла для файлов у которых не проставлен тип
+            </summary>
+            <param name="count"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.Images.CrocoImageResizeService">
+            <summary>
+            Сервис логики для пережимания изображений.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.Images.CrocoImageResizeService.#ctor(Croco.Core.Logic.Files.Options.CrocoFileOptions,Croco.Core.Logic.Files.Services.FileChecker)">
+            <summary>
+            Конструктор.
+            </summary>
+            <param name="fileOptions"></param>
+            <param name="fileChecker"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.Images.CrocoImageResizeService.HandleImageSizes(Croco.Core.Logic.Files.Models.FileNameAndDataModel,System.Func{Croco.Core.Logic.Files.Models.ResizedImageData,System.Threading.Tasks.Task},System.Threading.CancellationToken)">
+            <summary>
+            Обработать все размеры изображения.
+            </summary>
+            <param name="file"></param>
+            <param name="processFunc"></param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.Images.CrocoImageService">
+            <summary>
+            Сборник специфических вещей в ядре
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.Images.CrocoImageService.Set(Croco.Core.Logic.Files.Abstractions.ICrocoImageService)">
+            <summary>
+            Установить кастомного пережимателя изображений
+            </summary>
+            <param name="crocoImageResizer"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.Images.CrocoImageService.Get">
+            <summary>
+            Получить пережимателя изображений
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.Images.CrocoImageSharpService">
+            <summary>
+            Сервис для работы с изображениями используя библиотеку ImageSharp
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.Images.CrocoImageSharpService.ConvertImageToPng(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.Images.CrocoImageSharpService.Resize(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.Images.CrocoImageSharpService.GetResizedImageStream(System.Byte[],System.Func{SixLabors.ImageSharp.Image,SixLabors.ImageSharp.Size},SixLabors.ImageSharp.Formats.IImageEncoder)">
+            <summary>
+            Пережать изображение
+            </summary>
+            <param name="binaryImage"></param>
+            <param name="sizeGetter"></param>
+            <param name="imageEncoder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.Images.DefaultCrocoImageService">
+            <summary>
+            Стандартный пережиматель изображений без реализации
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PrivateFiles.LocalFileCopyPrivateFileUploadedHandler">
+            <summary>
+            Сервис для сохранения локальных копий приватных файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.LocalFileCopyPrivateFileUploadedHandler.#ctor(Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService,Croco.Core.Logic.Files.Options.LocalFileCopySaverOptions,Croco.Core.Logic.Files.Services.FileChecker,Croco.Core.Logic.Files.Abstractions.IFileUrlPathFormatOptionsProvider,Croco.Core.Contract.Application.ICrocoApplication,Croco.Core.Logic.Files.Services.Images.CrocoImageResizeService)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="service"></param>
+            <param name="copyServiceOptions"></param>
+            <param name="fileChecker"></param>
+            <param name="fileUrlPathFormatOptionsProvider"></param>
+            <param name="application"></param>
+            <param name="imageResizeService"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.LocalFileCopyPrivateFileUploadedHandler.HandleFile(Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileDataModel,System.Threading.CancellationToken)">
+            <summary>
+            Сохранить все копии необходимые для сохранения файла
+            </summary>
+            <param name="dbFile"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.LocalFileCopyPrivateFileUploadedHandler.SaveOriginalFile(Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileDataModel,System.Threading.CancellationToken)">
+            <summary>
+            Сохранить оригинальный файл
+            </summary>
+            <param name="dbFile">файл</param>
+            <param name="cancellationToken">Токен отмены</param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileDataSyncService">
+            <summary>
+            Сервис для синхронизации приватных файлов между различными хранилищами.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileDataSyncService.#ctor(System.Collections.Generic.IEnumerable{Croco.Core.Logic.Files.Abstractions.IPrivateFileDataSyncService},Microsoft.Extensions.Logging.ILogger{Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileDataSyncService},Croco.Core.Contract.Application.ICrocoApplication)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileDataSyncService.SyncFiles(Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileSyncModel[],System.Threading.CancellationToken)">
+            <summary>
+            Синхронизировать файлы.
+            </summary>
+            <param name="files"></param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileDataSyncService.CheckFiles(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Проверить файлы и создать отсутствующие копии.
+            </summary>
+            <param name="maxFilesCount">Максимальное количество созданных файлов.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService">
+            <summary>
+            Сервис для работы с приватными файлами
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService.#ctor(Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="filesDbContext"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService.GetFileDataById(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService.GetFileDatasBySetId(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService.GetFileNameById(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService.GetFileNamesBySetId(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService.GetFileSyncModelsByIds(System.String[],System.Threading.CancellationToken)">
+            <summary>
+            Получить модели файлов для синхронизации.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService.GetAllFileIds(System.Threading.CancellationToken)">
+            <summary>
+            Получить все идентификаторы файлов.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService.GetFileNamesByGroupId(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService.GetFiles(Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileService">
+            <summary>
+            Сервис для работы с приватными файлами
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileService.#ctor(Croco.Core.Contract.Data.ICrocoDataConnection{Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext},Croco.Core.Contract.EventSourcing.Abstractions.IEventSourcer,Croco.Core.Logic.Files.Services.FileChecker,Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileUploadedAggregatedHandler,Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileDataSyncService)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileService.Create(Croco.Core.Logic.Files.Models.PrivateFiles.UploadPrivateFilesRequest,Croco.Core.Logic.Files.Options.FilesUploadOptions{Croco.Core.Logic.Files.Entities.PrivateDbFile},System.Threading.CancellationToken)">
+            <summary>
+            Создать файлы
+            </summary>
+            <param name="model"></param>
+            <param name="options"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileService.SetGroupId(Croco.Core.Logic.Files.Models.PrivateFiles.SetGroupIdForPrivateFilesRequest,System.Threading.CancellationToken)">
+            <summary>
+            Установить идентификатор группы для файлов.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileSyncCachedService">
+            <summary>
+            Закешированный сервис для получения данных о файлах.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileSyncCachedService.#ctor(Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService)">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileSyncCachedService.GetFiles(System.String[],System.Threading.CancellationToken)">
+            <summary>
+            Получить файлы.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileUploadedAggregatedHandler">
+            <summary>
+            Сервис для работы с копиями изображений
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileUploadedAggregatedHandler.#ctor(System.Collections.Generic.IEnumerable{Croco.Core.Logic.Files.Abstractions.IPrivateFileUploadedHandler},Croco.Core.Contract.Application.ICrocoApplication,Microsoft.Extensions.Logging.ILogger{Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileUploadedAggregatedHandler})">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="handlers"></param>
+            <param name="application"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileUploadedAggregatedHandler.HandleFile(Croco.Core.Logic.Files.Models.PrivateFiles.PrivateFileDataModel,System.Threading.CancellationToken)">
+            <summary>
+            Обработчик загрузки файла
+            </summary>
+            <param name="dbFile"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileUploadedAggregatedHandler.HandleFileById(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Создать копию для приватного файла по идентификатору
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PublicFiles.DatabaseLocalFileCopyService">
+            <summary>
+            Менеджер локального хранилища для работы с файлами
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.DatabaseLocalFileCopyService.#ctor(Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext,Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService,Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService,Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyUploadedHandler)">
+            <summary>
+            Создает 
+            </summary>
+            <param name="db">База данных</param>
+            <param name="fileQueryService"></param>
+            <param name="publicFileLocalCopyService"></param>
+            <param name="localFileUploadedHandler"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.DatabaseLocalFileCopyService.MakeLocalCopies(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Сделать локальные копии нескольких файлов на сервер из базы данных
+            </summary>
+            <param name="count"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.DatabaseLocalFileCopyService.MakeLocalCopies(System.Int32[],System.Threading.CancellationToken)">
+            <summary>
+            Сделать локальные копии файлов
+            </summary>
+            <param name="fileIds"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.DatabaseLocalFileCopyService.MakeLocalCopyById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Создать локальную копию файла по идентификатору файла
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.DatabaseLocalFileCopyService.GetFilesThatAreNotOnLocalMachine(System.Threading.CancellationToken)">
+            <summary>
+            Получить файлы, которых нет на локальной машине
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.DatabaseLocalFileCopyService.GetFileById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получить файл по идентификатору
+            </summary>
+            <param name="fileId"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileRelationManager">
+            <summary>
+            Менеджер для работы с файловыми отношениями
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileRelationManager.#ctor(Croco.Core.Contract.ICrocoModelValidator,Croco.Core.Contract.Data.ICrocoDataConnection{Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext})">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="modelValidator"></param>
+            <param name="dbConnection"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileRelationManager.AddOrUpdateFileRelation``1(Croco.Core.Logic.Files.Models.AddOrUpdateFileRelation{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileRelationManager.DeleteFileRelation``1(Croco.Core.Logic.Files.Models.DeleteFileRelation{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataService">
+            <summary>
+            Сервис для экспорта/импорта данных для файловой системы на основе бд
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataService.#ctor(Croco.Core.Contract.Data.ICrocoDataConnection{Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext},Croco.Core.Logic.Files.Services.PublicFiles.DatabaseLocalFileCopyService,Croco.Core.Logic.Files.Abstractions.IPublicFileDataBucketService)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataService.Export(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataService.DeleteFileData(Croco.Core.Logic.Files.Models.Requests.DeleteFileDataRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataService.ImportFile(Croco.Core.Logic.Files.Models.FileDataModel,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataService.ExportToBucket(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataService.ImportFromBucket(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataSyncService">
+            <summary>
+            Сервис для синхронизации публичных файлов между различными хранилищами.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataSyncService.#ctor(System.Collections.Generic.IEnumerable{Croco.Core.Logic.Files.Abstractions.IPublicFileDataSyncService},Microsoft.Extensions.Logging.ILogger{Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataSyncService},Croco.Core.Contract.Application.ICrocoApplication)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataSyncService.SyncFiles(Croco.Core.Logic.Files.Models.PublicFileSyncModel[],System.Threading.CancellationToken)">
+            <summary>
+            Синхронизировать файлы.
+            </summary>
+            <param name="files"></param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataSyncService.CheckFiles(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Проверить файлы и создать отсутствующие копии.
+            </summary>
+            <param name="maxFilesCount">Максимальное количество созданных файлов.</param>
+            <param name="cancellationToken">Токен отмены.</param>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService">
+            <summary>
+            Сервис для работы с локальными файлами
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService.ResizeImageSettings">
+            <summary>
+            Список настроек для измененных размеров изображений
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService.#ctor(Croco.Core.Logic.Files.Options.CrocoFileOptions,Microsoft.Extensions.Logging.ILogger{Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService})">
+            <summary>
+            Создаёт объект <see cref="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService"></see> для работы с локальными копиями файлов
+            </summary>
+            <param name="options"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService.GetFileCopyInfo(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получить информацию о локальной копии файла
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <param name="cancellationToken">Токен отмены операции</param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService.HasLocalCopy(System.Int32)">
+            <summary>
+            Имеется ли локальная копия данного файла
+            </summary>
+            <param name="fileId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService.ClearFileCopies">
+            <summary>
+            Удалить локальные копии файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService.GetResizedImageLocalPath(System.Int32,System.String)">
+            <summary>
+            Возвращает путь к локальному расположению изображения из базы данных по идентификатору и типу размера изображения.
+            (Использовать только при полной уверенности, что данный файл является изображением)
+            </summary>
+            <param name="fileId">Идентификатор изображения</param>
+            <param name="sizeName">Тип размера изображения</param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService.GetResizedImageLocalPath(System.String,System.String)">
+            <summary>
+            Возвращает путь к локальному расположению изображения из базы данных по идентификатору и типу размера изображения.
+            (Использовать только при полной уверенности, что данный файл является изображением)
+            </summary>
+            <param name="fileId">Идентификатор изображения</param>
+            <param name="sizeName">Тип размера изображения</param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService.GetFileContentsFromLocal(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получить данные файла по идентификатору из локальной копии
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService.GetLocalCopiedFileIds">
+            <summary>
+            Получить идентификаторы файлов, локальные копии, которых имеются на сервере
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyUploadedHandler">
+            <summary>
+            Сервис для сохранения локальных копий файлов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyUploadedHandler.#ctor(Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService,Croco.Core.Logic.Files.Options.LocalFileCopySaverOptions,Croco.Core.Logic.Files.Abstractions.IFileUrlPathFormatOptionsProvider,Croco.Core.Contract.Application.ICrocoApplication,Croco.Core.Logic.Files.Services.FileChecker,Croco.Core.Logic.Files.Services.Images.CrocoImageResizeService)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="service"></param>
+            <param name="copyServiceOptions"></param>
+            <param name="fileUrlPathFormatOptionsProvider"></param>
+            <param name="application"></param>
+            <param name="fileChecker"></param>
+            <param name="imageResizeService"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyUploadedHandler.HandleFile(Croco.Core.Logic.Files.Models.PublicFileDataModel,System.Threading.CancellationToken)">
+            <summary>
+            Обработать публичный файл обработчиками.
+            </summary>
+            <param name="dbFile"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyUploadedHandler.SaveOriginalFile(Croco.Core.Logic.Files.Models.PublicFileDataModel,System.Threading.CancellationToken)">
+            <summary>
+            Сохранить оригинальный файл
+            </summary>
+            <param name="dbFile">файл</param>
+            <param name="cancellationToken">Токен отмены</param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileManager">
+            <summary>
+            Менеджер файлов в базе данных
+            </summary>
+        </member>
+        <member name="P:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileManager.LocalStorageService">
+            <summary>
+            Менеджер локального хранилища для работы с файлами
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileManager.#ctor(Croco.Core.Logic.Files.Services.PublicFiles.DatabaseLocalFileCopyService,Croco.Core.Contract.Data.ICrocoDataConnection{Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext},Croco.Core.Contract.EventSourcing.Abstractions.IEventSourcer,Croco.Core.Logic.Files.Services.FileChecker,Microsoft.Extensions.Logging.ILogger{Croco.Core.Logic.Files.Services.PublicFiles.PublicFileManager},Croco.Core.Logic.Files.Services.PublicFiles.PublicFileUploadedAggregatedHandler,Croco.Core.Logic.Files.Services.PublicFiles.PublicFileDataSyncService)">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileManager.UploadFilesAsync(Croco.Core.Logic.Files.Models.Requests.UploadFilesRequest,Croco.Core.Logic.Files.Options.FilesUploadOptions{Croco.Core.Logic.Files.Entities.DbFile},System.Threading.CancellationToken)">
+            <summary>
+            Загрузить файлы в приложение.
+            <para></para>
+            Издает событие <see cref="T:Croco.Core.Logic.Files.Events.PublicFilesUploadedEvent"/>
+            </summary>
+            <param name="model"></param>
+            <param name="options"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService">
+            <summary>
+            Менеджер файлов сервис для запросов
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService.#ctor(Croco.Core.Logic.Files.DbContexts.CrocoFilesDbContext,Croco.Core.Logic.Files.Services.PublicFiles.PublicFileLocalCopyService,Croco.Core.Logic.Files.Abstractions.IPublicFileDataBucketService,Croco.Core.Logic.Files.Services.BaseDbFileQueryService)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="db"></param>
+            <param name="publicFileLocalCopyService"></param>
+            <param name="fileDataBucketService"></param>
+            <param name="baseQueryService"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService.GetFileName(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получить название файла
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService.GetFileNames(System.Int32[],System.Threading.CancellationToken)">
+            <summary>
+            Получить названия файлов
+            </summary>
+            <param name="fileIds">Идентификаторы файлов</param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService.GetFilesWithRelations(Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService.GetFiles(Croco.Core.Logic.Files.Models.Requests.SearchFilesRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService.GetFileSyncModelsByIds(System.Int32[],System.Threading.CancellationToken)">
+            <summary>
+            Получить все файлы для синхронизации.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService.GetAllFileIds(System.Threading.CancellationToken)">
+            <summary>
+            Получить все идентификаторы файлов.
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService.GetFileDataById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Получить файл по идентификатору
+            </summary>
+            <param name="fileId"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService.CountFilesWithFileDataInDatabase(System.Threading.CancellationToken)">
+            <summary>
+            Получить кол-во файлов у которых проставлен FileData в базе данных
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileSyncCachedService">
+            <summary>
+            Закешированный сервис для получения данных о файлах.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileSyncCachedService.#ctor(Croco.Core.Logic.Files.Services.PublicFiles.PublicFileQueryService)">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileSyncCachedService.GetFiles(System.Int32[],System.Threading.CancellationToken)">
+            <summary>
+            Получить файлы.
+            </summary>
+        </member>
+        <member name="T:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileUploadedAggregatedHandler">
+            <summary>
+            Агрегированный обработчик загрузки публичных файлов.
+            </summary>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileUploadedAggregatedHandler.#ctor(Croco.Core.Contract.Application.ICrocoApplication,System.Collections.Generic.IEnumerable{Croco.Core.Logic.Files.Abstractions.IPublicFileUploadedHandler},Microsoft.Extensions.Logging.ILogger{Croco.Core.Logic.Files.Services.PublicFiles.PublicFileUploadedAggregatedHandler})">
+            <summary>
+            Конструктор.
+            </summary>
+            <param name="application"></param>
+            <param name="handlers"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileUploadedAggregatedHandler.HandleFile(Croco.Core.Logic.Files.Models.PublicFileDataModel,System.Threading.CancellationToken)">
+            <summary>
+            Обработать загрузку файла.
+            </summary>
+            <param name="fileModel"></param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Croco.Core.Logic.Files.Services.PublicFiles.PublicFileUploadedAggregatedHandler.HandleFileById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Создать копию для приватного файла по идентификатору
+            </summary>
+            <param name="id"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
