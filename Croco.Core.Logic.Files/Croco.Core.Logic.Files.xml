@@ -800,13 +800,12 @@
             Обработчик события загрузки приватного файла.
             </summary>
         </member>
-        <member name="M:Croco.Core.Logic.Files.EventHandlers.PrivateFilesUploadedEventHandler.#ctor(Croco.Core.Contract.Application.ICrocoApplication,Microsoft.Extensions.Logging.ILogger{Croco.Core.Logic.Files.EventHandlers.PrivateFilesUploadedEventHandler},Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileQueryService,Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileUploadedAggregatedHandler)">
+        <member name="M:Croco.Core.Logic.Files.EventHandlers.PrivateFilesUploadedEventHandler.#ctor(Croco.Core.Contract.Application.ICrocoApplication,Microsoft.Extensions.Logging.ILogger{Croco.Core.Logic.Files.EventHandlers.PrivateFilesUploadedEventHandler},Croco.Core.Logic.Files.Services.PrivateFiles.PrivateFileUploadedAggregatedHandler)">
             <summary>
             Конструктор.
             </summary>
             <param name="application"></param>
             <param name="logger"></param>
-            <param name="queryService"></param>
             <param name="handler"></param>
         </member>
         <member name="T:Croco.Core.Logic.Files.Events.PrivateFilesUploadedEvent">

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <Version>10.7.6</Version>
+	  <Version>10.8.0</Version>
 	  <LangVersion>Latest</LangVersion>
       <ImplicitUsings>enable</ImplicitUsings>
 	  <Nullable>enable</Nullable>
@@ -14,6 +14,8 @@
 	  <Copyright>Copyright 2026</Copyright>
 	  <DocumentationFile>Croco.Core.Logic.Files.xml</DocumentationFile>
 	  <TargetFramework>net10.0</TargetFramework>
+	  <!-- MSBuild сам подтянет значение из переменной окружения операционной системы -->
+	  <SixLaborsLicenseKey>$(SIXLABORS_LICENSE_KEY)</SixLaborsLicenseKey>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -21,9 +23,9 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="Croco.Core" Version="10.18.0" />
+		<PackageReference Include="Croco.Core" Version="10.20.0" />
 		<PackageReference Include="SixLabors.ImageSharp" Version="4.1.3" />
-		<PackageReference Include="Croco.EF" Version="10.0.12" />
+		<PackageReference Include="Croco.EF" Version="10.0.14" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.14" />
 	</ItemGroup>
 

@@ -1,0 +1,28 @@
+name: Publish to NuGet
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x' # Укажите вашу версию .NET (например, 6.0.x, 8.0.x, 9.0.x)
+
+    - name: Build and Pack NuGet
+      env:
+        SIXLABORS_LICENSE_KEY: ${{ secrets.SIXLABORS_LICENSE_KEY }}
+      run: |
+        dotnet restore
+        dotnet build --configuration Release --no-restore
+        dotnet pack --configuration Release --no-build --output ./output
+
+    - name: Push to NuGet
+      run: |
+        dotnet nuget push ./output/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://nuget.org --skip-duplicate
