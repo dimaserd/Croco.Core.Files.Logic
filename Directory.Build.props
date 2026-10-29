@@ -1,0 +1,7 @@
+<Project>
+    <PropertyGroup>
+        <!-- MSBuild автоматически подтянет значение из env-переменной GitHub Actions -->
+        <!-- и безопасно применит его ко ВСЕМ проектам, включая тестовые -->
+        <SixLaborsLicenseKey Condition="'$(SIXLABORS_LICENSE_KEY)' != ''">$(SIXLABORS_LICENSE_KEY)</SixLaborsLicenseKey>
+    </PropertyGroup>
+</Project>
