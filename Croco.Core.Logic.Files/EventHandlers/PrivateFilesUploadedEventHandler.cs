@@ -12,7 +12,6 @@ namespace Croco.Core.Logic.Files.EventHandlers;
 /// </summary>
 internal sealed class PrivateFilesUploadedEventHandler : CrocoMessageHandler<PrivateFilesUploadedEvent>
 {
-    PrivateFileQueryService QueryService { get; }
     PrivateFileUploadedAggregatedHandler AggregatedHandler { get; }
     
     /// <summary>
@@ -20,15 +19,12 @@ internal sealed class PrivateFilesUploadedEventHandler : CrocoMessageHandler<Pri
     /// </summary>
     /// <param name="application"></param>
     /// <param name="logger"></param>
-    /// <param name="queryService"></param>
     /// <param name="handler"></param>
     public PrivateFilesUploadedEventHandler( 
         ICrocoApplication application, 
-        ILogger<PrivateFilesUploadedEventHandler> logger, 
-        PrivateFileQueryService queryService, 
+        ILogger<PrivateFilesUploadedEventHandler> logger,
         PrivateFileUploadedAggregatedHandler handler) : base(application, logger)
     {
-        QueryService = queryService;
         AggregatedHandler = handler;
     }
 

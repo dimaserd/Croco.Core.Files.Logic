@@ -6,7 +6,7 @@ namespace Croco.Core.Logic.Files.Health;
 internal sealed class LocalFileCopiesCrocoHealthCheck : ICrocoHealthChecker
 {
     DateTime LastCheckedOnUtc = DateTime.MinValue;
-    int? LastNotCopiedFileId = null;
+    int? LastNotCopiedFileId;
 
     readonly int MinutesToCopy = 5;
     DatabaseLocalFileCopyService LocalFileCopyService { get; }
