@@ -17,7 +17,8 @@ jobs:
 
     - name: Build and Pack NuGet
       env:
-        SIXLABORS_LICENSE_KEY: ${{ secrets.SIXLABORS_LICENSE_KEY }}
+        DOTNET_ROOT: /usr/share/dotnet
+        SIXLABORS_LICENSE_KEY: ${{ secrets.SIXLABORS_LICENSE_KEY }} # Убедитесь, что секрет берется отсюда
       run: |
         dotnet restore
         # Передаем ключ лицензии напрямую как свойство MSBuild при сборке
