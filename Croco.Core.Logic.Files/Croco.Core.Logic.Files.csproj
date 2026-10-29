@@ -14,7 +14,7 @@
 	  <Copyright>Copyright 2026</Copyright>
 	  <DocumentationFile>Croco.Core.Logic.Files.xml</DocumentationFile>
 	  <TargetFramework>net10.0</TargetFramework>
-	  <!-- MSBuild сам подтянет значение из переменной окружения операционной системы -->
+	  <!-- MSBuild должен явно считать переменную окружения GitHub Actions -->
 	  <SixLaborsLicenseKey>$(SIXLABORS_LICENSE_KEY)</SixLaborsLicenseKey>
   </PropertyGroup>
 
