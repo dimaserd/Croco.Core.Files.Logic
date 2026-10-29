@@ -14,6 +14,7 @@
 	  <Copyright>Copyright 2026</Copyright>
 	  <DocumentationFile>Croco.Core.Logic.Files.xml</DocumentationFile>
 	  <TargetFramework>net10.0</TargetFramework>
+	  <SixLaborsLicenseKey>Id=ctm_01m4pbr3e1bsdpe9v1etx85czx;Kind=Community;ExpiryDateUtc=2028-01-09T20:51:24.3487327Z;Key=Assembly:2I5DCep71i75Xt+QThp8ynYa+S1wKD8Flv6YoMnlFUSvtBIdEQP13D9OhET2jfUhmQA9yqND9THrF047QGM4Vg==</SixLaborsLicenseKey>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -22,7 +23,7 @@
 	
 	<ItemGroup>
 		<PackageReference Include="Croco.Core" Version="10.20.0" />
-		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
+		<PackageReference Include="SixLabors.ImageSharp" Version="4.1.3" />
 		<PackageReference Include="Croco.EF" Version="10.0.14" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.14" />
 	</ItemGroup>
