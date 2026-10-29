@@ -22,9 +22,9 @@ jobs:
       run: |
         dotnet restore
         # Передаем ключ лицензии напрямую как свойство MSBuild при сборке
-        dotnet build --configuration Release --no-restore -p:SixLaborsLicenseKey="${{ secrets.SIXLABORS_LICENSE_KEY }}"
+        dotnet build --configuration Release --no-restore
         # И также явно дублируем его при упаковке (так как ImageSharp валидирует проект повторно)
-        dotnet pack --configuration Release --no-build --output ./output -p:SixLaborsLicenseKey="${{ secrets.SIXLABORS_LICENSE_KEY }}"
+        dotnet pack --configuration Release --no-build --output ./output
 
     - name: Push to NuGet
       run: |
