@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <Version>10.8.0</Version>
+	  <Version>10.8.1</Version>
 	  <LangVersion>Latest</LangVersion>
       <ImplicitUsings>enable</ImplicitUsings>
 	  <Nullable>enable</Nullable>
@@ -14,7 +14,7 @@
 	  <Copyright>Copyright 2026</Copyright>
 	  <DocumentationFile>Croco.Core.Logic.Files.xml</DocumentationFile>
 	  <TargetFramework>net10.0</TargetFramework>
-	  <SixLaborsLicenseKey>Id=ctm_01m4pbr3e1bsdpe9v1etx85czx;Kind=Community;ExpiryDateUtc=2028-01-09T20:51:24.3487327Z;Key=Assembly:2I5DCep71i75Xt+QThp8ynYa+S1wKD8Flv6YoMnlFUSvtBIdEQP13D9OhET2jfUhmQA9yqND9THrF047QGM4Vg==</SixLaborsLicenseKey>
+	  <SixLaborsLicenseKey>Id=ctm_01m4pbr3e1bsdpe9v1etx85czx;Kind=Community;ExpiryDateUtc=2028-01-28T06:36:02.0269685Z;Key=Assembly:gFK/1VN3B8zOZC40SEcfzlb137MRzEsSDQfkOiFOtVCgbHAxG6jaUkL9gNsArMfBgU6KIuiHBcAcLKqCRIjQaA==</SixLaborsLicenseKey>
   </PropertyGroup>
 
 	<ItemGroup>
